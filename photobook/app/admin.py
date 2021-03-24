@@ -1,4 +1,7 @@
 from django.contrib import admin
-from .models import Photo
+from photobook.app.models import Photo
 
-admin.site.register(Photo)
+
+@admin.register(Photo)
+class PhotoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'image_url', 'description', 'created_by', 'pub_date']
