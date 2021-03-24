@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'photobook.app',
+
+    # Libraries to AWS S3
+    'storages',
 ]
 
 MIDDLEWARE = [
