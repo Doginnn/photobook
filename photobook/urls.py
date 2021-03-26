@@ -4,11 +4,11 @@ from django.urls import path
 from django.conf import settings
 
 from photobook.app import views
-from photobook.app.views import PhotoCreateView
 
 
 urlpatterns = [
-    path('', views.base),
-    # path('PhotoCreateView', PhotoCreateView.as_view()),
+    path('', views.home),
+    path('upload_foto', views.upload_foto),
+    path('lista_foto', views.lista_foto),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
