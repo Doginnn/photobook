@@ -1,10 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Home</title>
+  <meta charset="utf-8">
+  <title>S3 Example Static Only</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 </head>
 <body>
-<h1>Este template é o HOME</h1>
+  <header>
+    <h1>S3 Example Static Only</h1>
+  </header>
+  <main>
+    <img src="{% static 'img/perfil 150x150.jpg' %}">
+    <h2>It's working!</h2>
+  </main>
+  <footer>
+    <a href="https://simpleisbetterthancomplex.com">www.SimpleIsBetterThanComplex.com</a>
+  </footer>
 </body>
 </html>
