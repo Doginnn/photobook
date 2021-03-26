@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+  <h2>Envie sua foto para o lindo casal</h2>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form_upload_foto.as_p }}
+    <div class="form-group">
+      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+    <div class="form-group">
+      <input class="form-control" type="text" placeholder="Descrição da foto">
+      <small id="emailHelp" class="form-text text-muted">Ex.: Foto enviada por Diógenes Dantas.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+
+</div>
+{% endblock %}
