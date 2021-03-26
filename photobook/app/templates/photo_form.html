@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center">
+
+  <form>
+    <div class="form-group">
+      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+  </form>
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Descrição</th>
+        <th>Data envio</th>
+        <th>Tamanho</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for photo in photos %}
+        <tr>
+          <td><a href="{{ photo.upload.url }}" target="_blank">{{ photo.upload.name }}</a></td>
+          <td>{{ photo.uploaded_at }}</td>
+          <td>{{ photo.upload.size|filesizeformat }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3">Nenhum arquivo.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
