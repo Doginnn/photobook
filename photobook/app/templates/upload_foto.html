@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="text-center">
-  <h2>Envie sua foto para o lindo casal</h2>
-  <form method="POST">
-    {% csrf_token %}
-    {{ form_upload_foto.as_p }}
-    <div class="form-group">
-      <input type="file" class="form-control-file" id="exampleFormControlFile1">
-    </div>
-    <div class="form-group">
-      <input class="form-control" type="text" placeholder="Descrição da foto">
-      <small id="emailHelp" class="form-text text-muted">Ex.: Foto enviada por Diógenes Dantas.</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
-
+<div class="card text-center">
+  <div class="card-reader">
+    <h2>Envie sua foto para o casal</h2>
+  </div>
+  <div class="form-group">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form_upload_foto.as_p }}
+      <div class="btn-group">
+        <input class="btn btn-primary" type="submit" value="Envia foto">
+      </div>
+      <div class="btn-group">
+        <a type="button" class="btn btn-dark" href="#">Voltar</a>
+      </div>
+    </form>
+  </div>
 </div>
 {% endblock %}
