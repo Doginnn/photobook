@@ -4,34 +4,39 @@
 
 <div class="text-center">
     <h2 class="page-header text-center">Fotos</h2>
-    <table class="table table-responsive-lg table-striped" id="banco-table">
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th>Nº do Banco</th>
-                <th>Nome completo do Banco</th>
+                <th>Id da Foto</th>
+                <th>Imagem</th>
+                <th>Descrição da Foto</th>
+                <th>Enviada em</th>
             </tr>
         </thead>
         <tbody>
             {% csrf_token %}
-            {% for form_lista_banco in form_lista_banco %}
+            {% for form_lista_foto in form_lista_foto %}
+            {{ form_lista_foto.as_p }}
             <tr>
-                <td>{{ form_lista_banco.numero_banco }}</td>
-                <td>{{ form_lista_banco.nome_banco }}</td>
-                <td><a type="button" class="btn btn-danger btn-sm fas fa-trash-alt"
-                        href="{% url 'deleta_banco' form_lista_banco.id %}">Apagar</a></td>
+                <td>{{ form_lista_foto.id }}</td>
+                <td>{{ form_lista_foto.upload }}</td>
+                <td>{{ form_lista_foto.description }}</td>
+                <td>{{ form_lista_foto.uploaded_at }}</td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="5" class="text-center text-white bg-gradient-danger">Nenhum novo Banco cadastrado</td>
+                <td colspan="5" class="text-center text-white bg-gradient-danger">Nenhuma Foto</td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    <div class="btn-group">
-        <a type="button" class="btn btn-dark btn-sm" href="{% url 'cria_banco' %}">Novo Banco</a>
-    </div>
-    <div class="btn-group">
-        <a type="button" class="btn btn-dark btn-sm" href="{% url 'home' %}">Voltar</a>
+    <div class="form-group">
+        <div class="btn-group">
+            <a type="button" class="btn btn-primary" href="#">Nova Foto</a>
+        </div>
+        <div class="btn-group">
+            <a type="button" class="btn btn-dark" href="#">Voltar</a>
+        </div>
     </div>
 </div>
 
