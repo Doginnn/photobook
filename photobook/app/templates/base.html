@@ -63,37 +63,96 @@
 
   <!-- Page Content -->
   <div class="container">
+
     <div class="row">
-      <div class="col-md-4 mb-5">
-<!--        <div class="card h-100">-->
-<!--          <img class="card-img-top" src="https://placehold.it/300x200" alt="">-->
-<!--          <div class="card-body">-->
-<!--            <h4 class="card-title">TOP 1</h4>-->
-<!--            <p class="card-text">Essa é a TOP 1 foto escolhida pelo casal.</p>-->
-<!--          </div>-->
-<!--        </div>-->
+
+      <div class="col-12 my-5">
+
+        <!-- Carousel -->
+        <div id="carouselFade" class="carousel slide carousel-fade" data-ride="carousel">
+
+          <div class="col-12 text-center">
+
+            <h2>TOP 3 'Melhores Fotos'</h2>
+            <p>Essas é o TOP 3 melhores fotos escolhidas pelo casal</p>
+
+          </div>
+
+          <ol class="carousel-indicators">
+            <li data-target="#carouselFade" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselFade" data-slide-to="1"></li>
+            <li data-target="#carouselFade" data-slide-to="2"></li>
+          </ol>
+
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+
+              <img src="photobook/app/media/1.png" class="img-fluid d-block w-100">
+
+              <div class="carousel-caption">
+
+                <h2>Foto TOP 1</h2>
+                <p>Essa é a melhor foto escolhida pelo casal.</p>
+
+              </div>
+
+            </div>
+
+            <div class="carousel-item">
+              <img src="photobook/app/media/capa.jpg" class="img-fluid d-block w-100">
+
+              <div class="carousel-caption">
+                <h2>Foto TOP 2</h2>
+                <p>Essa é a 2ª melhor foto escolhida pelo casal.</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <a class="carousel-control-prev" href="#carouselFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+
+          <a class="carousel-control-next" href="#carouselFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="sr-only">Próximo</span>
+          </a>
+
+        </div>
+
       </div>
+
     </div>
+      <!-- Fim Carousel -->
+  </div>
     <!-- /.row -->
   </div>
   <!-- /.container -->
 
   <!-- Inicia o conteúdo da página -->
   <div class="container">
+
       <div class="row">
+
         {% block content %}
 
         {% endblock %}
+
       </div>
+
   </div>
   <!-- Finaliza o conteúdo da página -->
 
   <!-- Footer -->
   <footer class="py-5 bg-dark">
+
     <div class="container">
       <p class="m-0 text-center text-white">Desenvolvido por - Diógenes Dantas</p>
     </div>
-    <!-- /.container -->
+
   </footer>
 
   <!-- Bootstrap core JavaScript -->
