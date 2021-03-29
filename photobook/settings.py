@@ -40,9 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'photobook.app',
 
+    # Crispy Forms - Lib to render django-forms
+    'crispy_forms',
+
     # Libraries to AWS S3
     'storages',
 ]
+
+# Crispy Forms
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,10 +134,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'photobook/app/media/')
 MEDIA_URL = 'photobook/app/media/'
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'photobook/app/media/')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'photobook/app/static')
+]
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
