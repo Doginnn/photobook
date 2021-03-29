@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
@@ -19,8 +20,9 @@ def lista_foto(request):
 def upload_foto(request):
     if request.method == 'POST':
         form_upload_foto = PhotoForm(request.POST)
-        if form_upload_foto.is_valid:
-            form_upload_foto.save
+        if form_upload_foto.is_valid():
+            form_upload_foto.save()
+            messages.success(request, "Upload realizado com SUCESSO!")
             return redirect('lista_foto')
     else:
         form_upload_foto = PhotoForm()
