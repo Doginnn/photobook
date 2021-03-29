@@ -39,10 +39,10 @@
             <a class="nav-link" href="{% url 'upload_foto' %}">Upload</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="lista_foto">Galeria</a>
+            <a class="nav-link" href="{% url 'lista_foto' %}">Galeria</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Aprovação</a>
+            <a class="nav-link" href="admin">Aprovação</a>
           </li>
         </ul>
       </div>
@@ -79,12 +79,12 @@
   <!-- /.container -->
 
   <!-- Inicia o conteúdo da página -->
-  <div class="container-fluid">
-      <main class="container">
-      {% block content %}
+  <div class="container">
+      <div class="row">
+        {% block content %}
 
-      {% endblock %}
-      </main>
+        {% endblock %}
+      </div>
   </div>
   <!-- Finaliza o conteúdo da página -->
 
