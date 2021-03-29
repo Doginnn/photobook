@@ -1,4 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'home.html' %}
+
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -6,7 +8,7 @@
 
     <div class="col-12 text-center">
 
-        <h2>Envie sua foto para o casal</h2>
+        <h2>Fotos Aguardando Aprovação</h2>
 
     </div>
 
@@ -22,22 +24,22 @@
 
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Imagem</th>
                                 <th>Descrição da Foto</th>
-                                <th>Criada em</th>
+                                <th>Enviada em</th>
+                                <th>Enviada por</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             {% csrf_token %}
                             {% for form_lista_foto in form_lista_foto %}
-                            {{ form_lista_foto.as_ }}
+                            {{ form_lista_foto.as_p }}
                             <tr>
-                                <td>{{ form_lista_foto.id }}</td>
                                 <td>{{ form_lista_foto.upload }}</td>
                                 <td>{{ form_lista_foto.description }}</td>
                                 <td>{{ form_lista_foto.uploaded_at }}</td>
+                                <td>{{ form_lista_foto.user }}</td>
                             </tr>
                             {% empty %}
                             <tr>
