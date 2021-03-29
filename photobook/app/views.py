@@ -19,7 +19,7 @@ def lista_foto(request):
 
 def upload_foto(request):
     if request.method == 'POST':
-        form_upload_foto = PhotoForm(request.POST)
+        form_upload_foto = PhotoForm(request.POST or None, request.FILES or None)
         if form_upload_foto.is_valid():
             form_upload_foto.save()
             messages.success(request, "Upload realizado com SUCESSO!")
@@ -27,6 +27,14 @@ def upload_foto(request):
     else:
         form_upload_foto = PhotoForm()
     return render(request, 'upload_foto.html', {'form_upload_foto': form_upload_foto})
+
+
+def aprovar_foto(request):
+    pass
+
+
+def deletar_foto(request):
+    pass
 
 
 # class PhotoCreateView(CreateView):
