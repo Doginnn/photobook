@@ -1,8 +1,4 @@
-from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
-
 from photobook.app.models import Photo
 from photobook.app.forms import PhotoForm
 
@@ -17,25 +13,40 @@ def lista_foto(request):
     return render(request, 'lista_foto.html', {'form_lista_foto': form_lista_foto})
 
 
+def fotos_aprovadas(request):
+    form_fotos_aprovadas = Photo.objects.all()
+    return render(request, 'fotos_aprovadas.html', {'form_fotos_aprovadas': form_fotos_aprovadas})
+
+
 def upload_foto(request):
     if request.method == 'POST':
         form_upload_foto = PhotoForm(request.POST or None, request.FILES or None)
         if form_upload_foto.is_valid():
             form_upload_foto.save()
-            messages.success(request, "Upload realizado com SUCESSO!")
             return redirect('lista_foto')
     else:
         form_upload_foto = PhotoForm()
     return render(request, 'upload_foto.html', {'form_upload_foto': form_upload_foto})
 
 
-def aprovar_foto(request):
-    pass
+def aprova_foto(request, pk):
+    if request.method == 'POST':
+        order = Photo.objects.get(id=pk)
+        form_aprova_foto = PhotoForm(request.POST, instance=order)
+        if form_aprova_foto.is_valid():
+            form_aprova_foto.save()
+            return redirect('fotos_aprovadas')
+    else:
+        form_aprova_foto = PhotoForm()
+    return render(request, 'aprova_foto.html', {'form_aprova_foto': form_aprova_foto})
 
 
-def deletar_foto(request):
-    pass
-
+def deleta_foto(request, id):
+    foto = Photo.objects.get(id=id)
+    if request.method == 'POST':
+        foto.delete()
+        return redirect('fotos_aprovadas')
+    return render(request, 'deleta_foto.html', {'item': foto})
 
 # class PhotoCreateView(CreateView):
 #     model = Photo
