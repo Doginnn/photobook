@@ -1,0 +1,85 @@
+{% extends 'home.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="col-12 my-5">
+
+    <div class="col-12 text-center">
+
+        <h2>Fotos para serem Aprovadas</h2>
+
+    </div>
+
+    <div class="form-row justify-content-center mb-5">
+
+        <div class="col-sm-12 col-md-10 col-lg-10">
+
+            <div class="form-row justify-content-center">
+
+                <div class="form-group">
+
+                    <table class="table table-striped">
+
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Imagem</th>
+                                <th>Descrição da Foto</th>
+                                <th>Enviada em</th>
+                                <th>Enviada por</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% csrf_token %}
+                            {% for form_aprova_foto in form_aprova_foto %}
+                            {{ form_aprova_foto.as_p }}
+                            <tr>
+                                <td>{{ form_aprova_foto.id }}</td>
+                                <td>{{ form_aprova_foto.upload }}</td>
+                                <td>{{ form_aprova_foto.description }}</td>
+                                <td>{{ form_aprova_foto.uploaded_at }}</td>
+                                <td>{{ form_aprova_foto.user }}</td>
+                                <td><a type="button" class="btn btn-success  btn-sm fas fa-edit"
+                                        href="#{% url 'atualiza_entrada' form_lista_entrada.id %}">Aprovar</a></td>
+                                <td><a type="button" class="btn btn-danger btn-sm fas fa-trash-alt"
+                                        href="#{% url 'deleta_entrada' form_lista_entrada.id %}">Apagar</a></td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center text-white bg-gradient-danger">Nenhuma Foto</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="form-row justify-content-center">
+
+                <div class="form-group">
+
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-primary" href="{% url 'upload_foto' %}">Nova Foto</a>
+                    </div>
+
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-dark" href="{% url 'home' %}">Voltar</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
