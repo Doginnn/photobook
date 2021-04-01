@@ -76,41 +76,26 @@
 
           <div class="col-12 text-center">
 
-            <h2>TOP 3 'Melhores Fotos'</h2>
-            <p>Essas é o TOP 3 melhores fotos escolhidas pelo casal</p>
+            <h2>TOP 'Melhores Fotos'</h2>
+            <p>Essas são as melhores fotos escolhidas pelo casal</p>
 
           </div>
 
-          <ol class="carousel-indicators">
-            <li data-target="#carouselFade" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselFade" data-slide-to="1"></li>
-            <li data-target="#carouselFade" data-slide-to="2"></li>
-          </ol>
-
           <div class="carousel-inner">
 
-            <div class="carousel-item active">
+            {% for object in form_home %}
+            <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
 
-              <img src="photobook/app/media/1.png" class="img-fluid d-block w-100">
+              <img src="{{ object.upload.url }}" style="height: 540px" class="img-fluid d-block w-100">
 
               <div class="carousel-caption">
 
-                <h2>Foto TOP 1</h2>
-                <p>Essa é a melhor foto escolhida pelo casal.</p>
+                <p>{{ object.description }}</p>
 
               </div>
 
             </div>
-
-            <div class="carousel-item">
-              <img src="photobook/app/media/capa.jpg" class="img-fluid d-block w-100">
-
-              <div class="carousel-caption">
-                <h2>Foto TOP 2</h2>
-                <p>Essa é a 2ª melhor foto escolhida pelo casal.</p>
-              </div>
-
-            </div>
+            {% endfor %}
 
           </div>
 
@@ -153,7 +138,7 @@
   <footer class="py-5 bg-dark">
 
     <div class="container">
-      <p class="m-0 text-center text-white">Desenvolvido por - Diógenes Dantas</p>
+      <p class="m-0 text-center text-white">Site Desenvolvido por - Diógenes Dantas</p>
     </div>
 
   </footer>
