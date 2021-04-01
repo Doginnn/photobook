@@ -24,28 +24,24 @@
 
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Imagem</th>
                                 <th>Descrição da Foto</th>
                                 <th>Enviada em</th>
-                                <th>Enviada por</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             {% csrf_token %}
-                            {% for form_aprova_foto in form_aprova_foto %}
-                            {{ form_aprova_foto.as_p }}
+                            {% for form_aprovar_fotos in form_aprovar_fotos %}
+                            {{ form_aprovar_fotos.as_p }}
                             <tr>
-                                <td>{{ form_aprova_foto.id }}</td>
                                 <td>{{ form_aprova_foto.upload }}</td>
                                 <td>{{ form_aprova_foto.description }}</td>
                                 <td>{{ form_aprova_foto.uploaded_at }}</td>
-                                <td>{{ form_aprova_foto.user }}</td>
                                 <td><a type="button" class="btn btn-success  btn-sm fas fa-edit"
-                                        href="#{% url 'atualiza_entrada' form_lista_entrada.id %}">Aprovar</a></td>
+                                        href="#">Aprovar</a></td>
                                 <td><a type="button" class="btn btn-danger btn-sm fas fa-trash-alt"
-                                        href="#{% url 'deleta_entrada' form_lista_entrada.id %}">Apagar</a></td>
+                                        href="#">Apagar</a></td>
                             </tr>
                             {% empty %}
                             <tr>
