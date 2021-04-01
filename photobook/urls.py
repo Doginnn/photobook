@@ -11,6 +11,6 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('upload_foto', views.upload_foto, name='upload_foto'),
     path('lista_foto', views.lista_foto, name='lista_foto'),
-    path('aprova_foto/<str:pk>/', views.aprova_foto, name='aprova_foto'),
+    path('aprovar_fotos', views.aprovar_fotos, name='aprovar_fotos'),
     path('admin/', admin.site.urls, name='admin'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
