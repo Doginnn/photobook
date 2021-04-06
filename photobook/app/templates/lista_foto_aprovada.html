@@ -1,0 +1,75 @@
+{% extends 'home.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="col-12 my-5">
+
+    <div class="col-12 text-center">
+
+        <h2>Fotos Aprovadas pelo Casal</h2>
+
+    </div>
+
+    <div class="form-row justify-content-center mb-5">
+
+        <div class="col-sm-12 col-md-10 col-lg-10">
+
+            <div class="form-row justify-content-center">
+
+                <div class="form-group">
+
+                    <table class="table table-hover">
+
+                        <thead>
+                            <tr>
+                                <th>Imagem</th>
+                                <th>Descrição da Foto</th>
+                                <th>Enviada em</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% csrf_token %}
+                            {% for form_lista_foto_aprovada in form_lista_foto_aprovada %}
+                            {{ form_lista_foto_aprovada.as_p }}
+                            <tr>
+                                <td>{{ form_lista_foto_aprovada.upload }}</td>
+                                <td>{{ form_lista_foto_aprovada.description }}</td>
+                                <td>{{ form_lista_foto_aprovada.uploaded_at }}</td>
+                                <td>{{ form_lista_foto_aprovada.status }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5" class="text-center text-black bg-gradient-danger">Nenhuma foto aprovada ainda.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+            <div class="form-row justify-content-center">
+
+                <div class="form-group">
+
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-dark" href="{% url 'home' %}">Voltar</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
