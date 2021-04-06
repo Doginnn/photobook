@@ -8,7 +8,7 @@
 
     <div class="col-12 text-center">
 
-        <h2>Fotos Aguardando Aprovação</h2>
+        <h2>Fotos Aprovadas pelo Casal</h2>
 
     </div>
 
@@ -20,30 +20,30 @@
 
                 <div class="form-group">
 
-                    <table class="table table-striped">
+                    <table class="table table-hover">
 
                         <thead>
                             <tr>
                                 <th>Imagem</th>
                                 <th>Descrição da Foto</th>
                                 <th>Enviada em</th>
-                                <th>Enviada por</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             {% csrf_token %}
-                            {% for form_lista_foto in form_lista_foto %}
-                            {{ form_lista_foto.as_p }}
+                            {% for form_lista_fotos in form_lista_fotos %}
+                            {{ form_lista_fotos.as_p }}
                             <tr>
-                                <td>{{ form_lista_foto.upload }}</td>
-                                <td>{{ form_lista_foto.description }}</td>
-                                <td>{{ form_lista_foto.uploaded_at }}</td>
-                                <td>{{ form_lista_foto.user }}</td>
+                                <td>{{ form_lista_fotos.upload }}</td>
+                                <td>{{ form_lista_fotos.description }}</td>
+                                <td>{{ form_lista_fotos.uploaded_at }}</td>
+                                <td>{{ form_lista_fotos.status }}</td>
                             </tr>
                             {% empty %}
                             <tr>
-                                <td colspan="5" class="text-center text-white bg-gradient-danger">Nenhuma Foto</td>
+                                <td colspan="5" class="text-center text-black bg-gradient-danger">Nenhuma foto aprovada ainda.</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -57,10 +57,6 @@
             <div class="form-row justify-content-center">
 
                 <div class="form-group">
-
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-primary" href="{% url 'upload_foto' %}">Nova Foto</a>
-                    </div>
 
                     <div class="btn-group">
                         <a type="button" class="btn btn-dark" href="{% url 'home' %}">Voltar</a>
