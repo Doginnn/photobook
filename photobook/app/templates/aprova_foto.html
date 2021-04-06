@@ -34,13 +34,13 @@
 
                         <tbody>
                             {% csrf_token %}
-                            {% for form_aprovar_fotos in form_aprovar_fotos %}
-                            {{ form_aprovar_fotos.as_p }}
+                            {% for form_aprova_foto in form_aprova_foto %}
+                            {{ form_aprova_foto.as_p }}
                             <tr>
-                                <td>{{ form_aprovar_fotos.upload }}</td>
-                                <td>{{ form_aprovar_fotos.description }}</td>
-                                <td>{{ form_aprovar_fotos.uploaded_at }}</td>
-                                <td>{{ form_aprovar_fotos.user }}</td>
+                                <td>{{ form_aprova_foto.upload }}</td>
+                                <td>{{ form_aprova_foto.description }}</td>
+                                <td>{{ form_aprova_foto.uploaded_at }}</td>
+                                <td>{{ form_aprova_foto.user }}</td>
 
                                 <td><a type="button" class="btn btn-success  btn-sm fas fa-edit"
                                         href="#">Aprovar</a></td>
