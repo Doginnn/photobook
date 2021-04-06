@@ -8,7 +8,7 @@
 
     <div class="col-12 text-center">
 
-        <h2>Fotos para serem Aprovadas</h2>
+        <h2>Fotos Aguardando Aprovação</h2>
 
     </div>
 
@@ -16,17 +16,19 @@
 
         <div class="col-sm-12 col-md-10 col-lg-10">
 
-            <div class="form-row justify-content-center">
+            <div class="form-row justify-text-center">
 
                 <div class="form-group">
 
-                    <table class="table table-striped">
+                    <table class="table table-hover">
 
                         <thead>
                             <tr>
                                 <th>Imagem</th>
                                 <th>Descrição da Foto</th>
                                 <th>Enviada em</th>
+                                <th>Enviada por</th>
+<!--                                <th>Status</th>-->
                             </tr>
                         </thead>
 
@@ -35,17 +37,20 @@
                             {% for form_aprovar_fotos in form_aprovar_fotos %}
                             {{ form_aprovar_fotos.as_p }}
                             <tr>
-                                <td>{{ form_aprova_foto.upload }}</td>
-                                <td>{{ form_aprova_foto.description }}</td>
-                                <td>{{ form_aprova_foto.uploaded_at }}</td>
+                                <td>{{ form_aprovar_fotos.upload }}</td>
+                                <td>{{ form_aprovar_fotos.description }}</td>
+                                <td>{{ form_aprovar_fotos.uploaded_at }}</td>
+                                <td>{{ form_aprovar_fotos.user }}</td>
+
                                 <td><a type="button" class="btn btn-success  btn-sm fas fa-edit"
                                         href="#">Aprovar</a></td>
                                 <td><a type="button" class="btn btn-danger btn-sm fas fa-trash-alt"
                                         href="#">Apagar</a></td>
+
                             </tr>
                             {% empty %}
                             <tr>
-                                <td colspan="5" class="text-center text-white bg-gradient-danger">Nenhuma Foto</td>
+                                <td colspan="5" class="text-center text-black bg-gradient-danger">Nenhuma foto aguardando aprovação.</td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -59,10 +64,6 @@
             <div class="form-row justify-content-center">
 
                 <div class="form-group">
-
-                    <div class="btn-group">
-                        <a type="button" class="btn btn-primary" href="{% url 'upload_foto' %}">Nova Foto</a>
-                    </div>
 
                     <div class="btn-group">
                         <a type="button" class="btn btn-dark" href="{% url 'home' %}">Voltar</a>
