@@ -9,5 +9,9 @@ class Photo(models.Model):
     status = models.BooleanField("Status", default=False, null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Selecione um Usuário")
 
+    def approve(self):
+        self.status = True
+        self.save()
+
     def __str__(self):
         return self.description
