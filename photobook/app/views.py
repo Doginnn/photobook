@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from photobook.app.models import Photo
-from photobook.app.forms import PhotoForm, AprovedForm
+from photobook.app.forms import PhotoForm
 # from django.views.generic import
 
 
@@ -24,15 +24,23 @@ def upload_foto(request):
 
 
 # Função listando todas as fotos a serem aprovadas pelo ADMIN
+# def lista_foto(request):
+#     form_lista_foto = Photo.objects.all().order_by('-id')
+#     context = {'form_lista_foto': form_lista_foto}
+#     return render(request, 'lista_foto.html', context)
 def lista_foto(request):
-    form_lista_foto = Photo.objects.all().order_by('-id')
+    form_lista_foto = Photo.objects.filter(status=True)
     context = {'form_lista_foto': form_lista_foto}
     return render(request, 'lista_foto.html', context)
 
 
 # Será um Carousel na HOME, abaixo do Carousel TOP 3.
+# def aprovar_fotos(request):
+#     form_aprovar_fotos = Photo.objects.filter(aprovado=True)
+#     context = {'form_aprovar_fotos': form_aprovar_fotos}
+#     return render(request, 'aprovar_fotos.html', context)
 def aprovar_fotos(request):
-    form_aprovar_fotos = Photo.objects.all().filter('id','aprovado')
+    form_aprovar_fotos = Photo.objects.all().order_by('-id')
     context = {'form_aprovar_fotos': form_aprovar_fotos}
     return render(request, 'aprovar_fotos.html', context)
 
