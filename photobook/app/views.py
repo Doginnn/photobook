@@ -23,26 +23,22 @@ def upload_foto(request):
     return render(request, 'upload_foto.html', context)
 
 
-# Função listando todas as fotos a serem aprovadas pelo ADMIN
-# def lista_foto(request):
-#     form_lista_foto = Photo.objects.all().order_by('-id')
-#     context = {'form_lista_foto': form_lista_foto}
-#     return render(request, 'lista_foto.html', context)
 def lista_foto(request):
-    form_lista_foto = Photo.objects.filter(status=True)
+    form_lista_foto = Photo.objects.all().order_by('-id')
     context = {'form_lista_foto': form_lista_foto}
     return render(request, 'lista_foto.html', context)
 
 
-# Será um Carousel na HOME, abaixo do Carousel TOP 3.
-# def aprovar_fotos(request):
-#     form_aprovar_fotos = Photo.objects.filter(aprovado=True)
-#     context = {'form_aprovar_fotos': form_aprovar_fotos}
-#     return render(request, 'aprovar_fotos.html', context)
-def aprovar_fotos(request):
-    form_aprovar_fotos = Photo.objects.all().order_by('-id')
-    context = {'form_aprovar_fotos': form_aprovar_fotos}
-    return render(request, 'aprovar_fotos.html', context)
+def lista_foto_aprovada(request):
+    form_lista_foto_aprovada = Photo.objects.filter(status=True)
+    context = {'form_lista_foto_aprovada': form_lista_foto_aprovada}
+    return render(request, 'lista_foto_aprovada.html', context)
+
+
+def aprova_foto(request):
+    form_aprova_foto = Photo.objects.all().order_by('-id')
+    context = {'form_aprova_foto': form_aprova_foto}
+    return render(request, 'aprova_foto.html', context)
 
 
 def deleta_foto(request, id):
