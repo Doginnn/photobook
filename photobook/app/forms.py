@@ -11,4 +11,4 @@ class PhotoForm(forms.ModelForm):
 class AprovedForm(forms.ModelForm):
     class Meta:
         model = Photo
-        fields = ['aprovado']
+        fields = ['status']
