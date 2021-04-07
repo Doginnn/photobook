@@ -43,7 +43,7 @@
                                 <td>{{ form_aprova_foto.user }}</td>
 
                                 <td><a type="button" class="btn btn-success  btn-sm fas fa-edit"
-                                        href="#">Aprovar</a></td>
+                                        href="{% url 'aprova_foto' pk=form_aprova_foto.pk %}">Aprovar</a></td>
                                 <td><a type="button" class="btn btn-danger btn-sm fas fa-trash-alt"
                                         href="#">Apagar</a></td>
 
