@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from photobook.app.models import Photo
 from photobook.app.forms import PhotoForm
 # from django.views.generic import
@@ -35,15 +35,20 @@ def lista_foto_aprovada(request):
     return render(request, 'lista_foto_aprovada.html', context)
 
 
-def aprova_foto(request):
-    form_aprova_foto = Photo.objects.all().order_by('-id')
-    context = {'form_aprova_foto': form_aprova_foto}
-    return render(request, 'aprova_foto.html', context)
+def aprova_foto(request, pk):
+    form_aprova_foto = get_object_or_404(Photo, pk=pk)
+    form_aprova_foto.approve()
+    return redirect('lista_foto_aprovada', pk=form_aprova_foto.upload.pk)
 
 
-def deleta_foto(request, id):
-    foto = Photo.objects.get(id=id)
-    if request.method == 'POST':
-        foto.delete()
-        return redirect('fotos_aprovadas')
-    return render(request, 'deleta_foto.html', {'item': foto})
+def deleta_foto(request, pk):
+    form_deleta_foto = get_object_or_404(Photo, pk=pk)
+    form_deleta_foto.approve()
+    return redirect('lista_foto_aprovada', pk=form_deleta_foto.upload.pk)
+
+# def deleta_foto(request, id):
+#     foto = Photo.objects.get(id=id)
+#     if request.method == 'POST':
+#         foto.delete()
+#         return redirect('fotos_aprovadas')
+#     return render(request, 'deleta_foto.html', {'item': foto})
